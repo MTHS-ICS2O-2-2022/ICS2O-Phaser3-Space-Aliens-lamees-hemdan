@@ -1,4 +1,4 @@
-/* Global Phaser */
+/* global Phaser */
 
 // Copyright (c) 2020 Mr. Coxall all rights reserved.
 //
@@ -6,10 +6,14 @@
 // Created on: April 2023
 // This is the Phaser3 game configuration file
 
+  // Scene import statements.
+  import SplashScene from './splashScene.js'
+
+  // create the new scenes.
+  const splashScene = new SplashScene()
 /**
  * Start Phaser Game
  */
-
 //* Game scene */
 const config = {
   type: Phaser.AUTO,
@@ -31,4 +35,11 @@ const config = {
 }
 
 const game = new Phaser.Game(config)
-console.log(game)
+  // console.log(game)
+
+  // Load scenes
+  // Note: Any "Key" is global and CAN NOT be reused.
+  game.scene.add('splashScene', splashScene)
+
+  // The start scene.
+  game.scene.start('splashScene')
