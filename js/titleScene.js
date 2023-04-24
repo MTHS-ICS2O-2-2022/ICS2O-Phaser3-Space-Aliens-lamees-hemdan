@@ -4,17 +4,17 @@
 //
 // Created by: Lamees Hemdan
 // Created on: April 2023
-// This is the splash scene
+// This is the Titel Scene
 
 /** 
-* This class is the splash scene 
+* This class is the Title scene 
 */
-  class SplashScene extends Phaser.Scene {
+  class TitleScene extends Phaser.Scene {
   /** 
   * This method is the constructor 
   */
   constructor() {
-    super({ key: 'splashScene' })
+    super({ key: 'TitleScene' })
   }
 
 /**
@@ -32,7 +32,7 @@
    * Use it to load assets
    */
   preload() {
-    console.log("Splash Scene")
+    console.log("Title Scene")
   }
 
   /** 
@@ -51,8 +51,8 @@
    * @param {number} delta - The delta time in ms since the last frame
     */
   update(time, delta) {
-    this.scene.switch("titleScene")
+    // pass
   }
 }
 
-export default SplashScene
+export default TitleScene
