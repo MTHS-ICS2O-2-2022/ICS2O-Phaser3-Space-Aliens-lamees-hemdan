@@ -18,8 +18,8 @@
   }
 
 /**
-  * Can be defind on your own Scenes
-  * This method is called by the Scene Manager when thte scene starts,
+  * Can be defined on your own Scenes
+  * This method is called by the Scene Manager when the scene starts,
   * before preload() and create()
   * @param {object} data - Any data passed via ScenePlugin.add() or ScenePlugin.start()
   */
@@ -28,7 +28,7 @@
   }
 
   /**
-   * Can be defind on your own Scenes
+   * Can be defined on your own Scenes
    * Use it to load assets
    */
   preload() {
@@ -36,7 +36,7 @@
   }
 
   /** 
-   * Can be defind on your own scenes 
+   * Can be defined on your own scenes 
    * Use it to create your own game objects.
    * @param {object} data - Any data passed via ScenePlugin.add() or ScenePlugin.start()
    */
@@ -45,7 +45,7 @@
   }
 
   /**
-   * Should be overriden by your own scenes
+   * Should be overridden by your own scenes
    * This method is called once per game step while game is running
    * @param {number} time - The current time
    * @param {number} delta - The delta time in ms since the last frame
