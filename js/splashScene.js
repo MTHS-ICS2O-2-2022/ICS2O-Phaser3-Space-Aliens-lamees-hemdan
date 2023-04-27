@@ -15,6 +15,7 @@
   */
   constructor() {
     super({ key: 'splashScene' })
+    this.splashSceneBackgroundImage = null
   }
 
 /**
@@ -33,6 +34,7 @@
    */
   preload() {
     console.log("Splash Scene")
+    this.load.image("splashSceneBackgroundImage", "./assets/splashSceneImage.png")
   }
 
   /** 
@@ -41,7 +43,13 @@
    * @param {object} data - Any data passed via ScenePlugin.add() or ScenePlugin.start()
    */
   create(data) {
-    // pass
+    this.splashSceneBackgroundImage = this.add.sprite(
+      0,
+      0, 
+      "splashSceneBackgroundImage"
+      )
+    this.splashSceneBackgroundImage.x = 1920 / 2
+    this.splashSceneBackgroundImage.y = 1080 / 2
   }
 
   /**
@@ -51,7 +59,9 @@
    * @param {number} delta - The delta time in ms since the last frame
     */
   update(time, delta) {
-    this.scene.switch("titleScene")
+    if (time > 3000) {
+      this.scene.switch("titleScene")
+    }
   }
 }
 
