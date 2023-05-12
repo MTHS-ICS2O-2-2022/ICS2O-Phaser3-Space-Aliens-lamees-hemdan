@@ -55,7 +55,7 @@
     this.ship = this.physics.add.sprite(1920 / 2, 1080 - 100, "ship")
 
     // create a group for the missiles
-    this.missiles = this.physics.add.group {}
+    this.missileGroup = this.physics.add.group()
   }
   
   /**
@@ -75,20 +75,23 @@
         this.ship.x = 0
       }
     }
+
     if (keyRightObj.isDown === true) {
       this.ship.x += 15
       if (this.ship.x > 1920) {
         this.ship.x = 1920
       }
     }
+
     if (keySpaceObj.isDown === true) {
-      if (this.fireMissile = false) {
+      if (this.fireMissile === false) {
         // fire missile
         this.fireMissile = true
-        const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
+        const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, "missile")
         this.missileGroup.add(aNewMissile)
       }
     }
+
     if (keySpaceObj.isUp === true) {
       this.fireMissile = false
     }
