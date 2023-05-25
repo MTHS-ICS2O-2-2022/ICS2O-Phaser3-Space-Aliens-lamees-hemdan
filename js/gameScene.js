@@ -93,7 +93,7 @@
    * @param {number} time - The current time
    * @param {number} delta - The delta time in ms since the last frame
     */
-    update(time, delta) {
+    update(time, delta) ;{
     const keyLeftObj = this.input.keyboard.addKey('LEFT')
     const keyRightObj = this.input.keyboard.addKey('RIGHT')
     const keySpaceObj = this.input.keyboard.addKey('SPACE')
