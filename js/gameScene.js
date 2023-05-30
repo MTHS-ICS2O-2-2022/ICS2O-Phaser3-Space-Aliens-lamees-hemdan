@@ -29,6 +29,11 @@
     this.background = null
     this.ship = null
     this.fireMissile = false
+    this.score = 0
+    this.scoreText = null
+    this.scoreTextStyle = { font: "65px Arial", fill: "#ffffff", align: "center" }
+    this.gameOverTextStyle = { font: "65px Arial", fill: "#ff0000", align: "center" }
+
   }
 
 /**
@@ -55,6 +60,7 @@
     // Sound
     this.load.audio('laser', 'assets/laser1.wav')
     this.load.audio('explosion', 'assets/barrelExploding.wav')
+    this.load.audio('bomb', 'assets/bomb.wav')
   }
 
   /** 
@@ -65,6 +71,8 @@
   create(data) {
     this.background = this.add.image(0, 0, "starBackground").setScale(2.0)
     this.background.setOrigin(0, 0)
+
+    this.scoreText = this.add.text(10, 10, "Score: " + this.score.toString(), this.scoreTextStyle)
 
     this.ship = this.physics.add.sprite(1920 / 2, 1080 - 100, "ship")
 
@@ -80,9 +88,23 @@
       missileCollide.destroy()
       alienCollide.destroy()
       this.sound.play('explosion')
+      this.score = this.score + 1
+      this.scoreText.setText("Score: " + this.score.toString())
       this.createAlien()
       this.createAlien()
     }.bind(this))
+
+    // Collisions between aliens and ship
+    this.physics.add.collider(this.ship, this.alienGroup, function (shipCollide, alienCollide) {
+      this.sound.play('bomb')
+      this.physics.pause()
+      alienCollide.destroy()
+      shipCollide.destroy()
+      this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Game Over!\nClick this to play again", this.gameOverTextStyle).setOrigin(0.5)
+      this.gameOverText.setInteractive({ useHandCursor: true })
+      this.gameOverText.on('pointerdown', () => this.scene.start('gameScene'))
+    }.bind(this))
+
   }
   
   /**
